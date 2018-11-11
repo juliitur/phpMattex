@@ -1,0 +1,17 @@
+.breadcrumb{
+  border-radius: 0px;
+  .container{
+    font-size: .8em;
+    justify-content: left;
+    color: $highlight-color;
+  }
+  a{
+    &:link, &:visited, &:hover, &:active{
+      text-decoration: none;
+      color: $highlight-color;
+    }
+  }
+  .bread-link{
+    margin: 0 5px 0 5px;
+  }
+}

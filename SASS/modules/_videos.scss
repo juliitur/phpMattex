@@ -1,0 +1,16 @@
+.video{
+  min-width: 200px;
+}
+
+#video-play{
+  position: relative;
+  min-height: 200px;
+  text-align: center;
+  color: rgb(3, 69, 107);
+  a{
+    color: rgb(97, 2, 2);
+    &:hover{
+      text-shadow: 2px 2px 3px #444;
+    }
+  }
+}

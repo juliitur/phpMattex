@@ -1,0 +1,116 @@
+{% if 'login.php' in url %}
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0 " id="main-nav">
+  <div class="container">
+      <p class="text-white mb-0">Monday - Saturday, 8am to 10pm </p>
+      <ul class="navbar-nav ml-auto account-controls">
+          <li class="nav-item ml-3"></li>
+          <li>
+          <a href="signup.php" class="nav-link">
+              <i class="fas fa-user-plus"></i> Sign Up
+          </a>
+          </li>
+      </ul>
+  </div>
+</nav>
+{% elseif 'signup.php' in url %}
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0 " id="main-nav">
+  <div class="container">
+      <p class="text-white mb-0">Monday - Saturday, 8am to 10pm </p>
+      <ul class="navbar-nav ml-auto account-controls">
+          <li class="nav-item ml-3">
+          </li>
+          <li class="nav-item">
+          <a href="login.php" class="nav-link">
+              <i class="fas fa-sign-in-alt"></i> Member Login
+          </a>
+          </li>
+      </ul>
+  </div>
+</nav>
+{% elseif logged_in %}
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0 " id="main-nav">
+  <div class="container">
+      <p class="text-white mb-0">Monday - Saturday, 8am to 10pm </p>
+      <p class="text-white center pl-5">Welcome {{ firstName }} {{ middleName }} {{ lastName }}</p>
+      <ul class="navbar-nav ml-auto account-controls">
+          <li class="nav-item ml-3">
+            </li>
+            {% if accountType == '0' %}
+            <li class="nav-item">
+            <a href="admin_panel.php" class="nav-link {% if 'admin' in url %} text-white {% endif %}">
+                <i class="fas"></i> Admin settings
+            </a>
+            </li>
+            {% endif %}
+          </li>
+          <li class="nav-item">
+          <a href="logout.php" class="nav-link">
+              log out <i class="fas fa-sign-out-alt"></i>
+          </a>
+          </li>
+      </ul>
+  </div>
+</nav>
+{% else %}
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0 " id="main-nav">
+  <div class="container">
+    <p class="text-white mb-0">Monday - Saturday, 8am to 10pm </p>
+      <ul class="navbar-nav ml-auto account-controls">
+        <li class="nav-item ml-3">
+        </li>
+        <li>
+          <a href="signup.php" class="nav-link">
+            <i class="fas fa-user-plus"></i> Sign Up
+          </a>
+        </li>
+              <li class="nav-item">
+          <a href="login.php" class="nav-link">
+            <i class="fas fa-sign-in-alt"></i> Member Login
+          </a>
+        </li>
+      </ul>
+  </div>
+</nav>
+{% endif %}
+<nav class="navbar navbar-expand-md navbar-dark bg-info p-3 ">
+    <div class="container">
+    <a href="index.php" class="navbar-brand">MATTEX INTERNATIONAL</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item {% if 'index.php' in url %} active {% endif %}">
+            <a href="index.php" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item {% if 'about.php' in url %} active {% endif %}">
+            <a href="about.php" class="nav-link">About Us</a>
+        </li>
+
+            <li class="nav-item dropdown {% if 'product' in url %} active {% endif %}">
+              <a href="products.php" class="nav-link dropdown-toggle" data-toggle="dropdown"> Products
+              </a>
+              <div class="dropdown-menu">
+                <!-- Generate the list based on the products list. -->
+                {% for product in prodlist %}
+              <a href="product_detail.php?ProductID={{ product.ProductID }}" class="dropdown-item" {% if product.ProductImg is not empty %} data-toggle="popover"{% endif %} data-img="images/{{ product.ProductName }}.jpg">
+                <i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i> {{ product.cleanName }}
+              </a>
+              {% endfor %}
+              </div>
+            </li>
+            <li class="nav-item {% if 'faq.php' in url %} active {% endif %}">
+              <a href="faq.php" class="nav-link">FAQ</a>
+            </li>
+            <li class="nav-item {% if 'contact.php' in url %} active {% endif %}">
+              <a href="contact.php" class="nav-link">Contact</a>
+            </li>
+            {% if logged_in %}
+            <li class="nav-item {% if 'cart.php' in url %} active {% endif %}">
+                <a href="cart.php" class="nav-link">view cart</a>
+              </li>
+              {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>

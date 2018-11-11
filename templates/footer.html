@@ -1,0 +1,49 @@
+<footer id="main-footer" class="py-4 bg-info text-white mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ml-auto text-left">
+          <ul>
+            <li><a href="contact.php" class="{% if 'contact' in url %} text-white {% endif %}">
+              <i class="fas fa-envelope"></i> Contact us
+            </a></li>
+            {% if logged_in %}
+            <li><a href="feedback.php"class="{% if 'feedback' in url %} text-white {% endif %}">
+              <i class="fas fa-pencil-alt" ></i> Submit Feedback
+            </a></li>
+            {% endif %}
+            <li><a href="sitemap.php"class="{% if 'sitemap' in url %} text-white {% endif %}">
+              <i class="fas fa-sitemap" ></i> Site map
+            </a></li>  
+          </ul> 
+        </div>
+        <div class="col-md-6 ml-auto text-right right">
+            <ul>
+                <li><a href="http://www.facebook.com">
+                  Like us on Facebook! <i class="fab fa-facebook"></i>
+                </a></li>
+                <li><a href="http://www.skype.com">
+                  Message us on Skype! <i class="fab fa-skype"></i> 
+                </a></li> 
+              </ul> 
+      </div>
+      </div>
+      <div class="row text-center">
+        <div class="col ml-auto">
+          <p class="lead">
+            Copyright &copy;
+            <span id="year"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+
+    

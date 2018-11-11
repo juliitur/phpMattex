@@ -1,0 +1,226 @@
+{% extends "main.html" %}
+
+{# META TAGS #}
+{% block pageDescription %} {{ info.MetaDescription }} {% endblock %}
+{% block pageKeywords %} {{ info.MetaKeywords }} {% endblock %}
+
+{# PAGE TITLE #}
+{% block pageName %} Contact {% endblock %}
+
+{# PAGE CONTENT #}
+{% block content %}
+
+{% block productDesc %}
+        <!-- Breadcrumbs -->
+        <nav class="navbar breadcrumb bg-info p-0">
+          <div class="container">
+            <a href="index.php" class="bread-link">Home</a>
+            <i class="fas fa-angle-right"></i>
+            <a href="products.php" class="bread-link">Products</a>        
+            <i class="fas fa-angle-right"></i>
+            <a href="product_detail.php?ProductID={{product.ProductID}}" class="bread-link">{{product.cleanName}}</a>
+          </div>
+        </nav>
+
+
+<section id="product" class="light-overlay">
+    <div class="container">
+      <h1 class="text-center text-muted title">{{product.cleanName}}</h1>
+      <hr>
+      <div class="row">
+        <div class="col-md-3">
+          <img src="images/{{product.ProductName}}.jpg" class="img-fluid product" alt="{{product.ProductName}}" title="{{product.ProductName}}">
+        </div>
+
+        <div class="col-md-9 product-desc">
+          <p>{{ info.Description1 }}</p>
+
+         <p>{{ info.Description2 }} </p>
+          <a href="add_to_cart.php?product_id={{product.ProductID}}" class="btn btn-info btn-lg float-right order">ORDER NOW</a>
+        </div>
+    </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block productSpecification %}
+ <section id="specification" class="p-5 bg-dark text-white">
+  <div class="container">
+        <h3 class="text-center text-white spec-title">PRODUCT SPECIFICATIONS</h3>
+        <br />
+        <div class="row">
+          <div class="col-md-6 specification-text">
+            <p class="specification-tbl center">
+              
+              {% if info.SpecLeft == 'video' %} 
+              <img class="img-fluid video" src="images/ejctorworking.gif" alt="Video explination" title="Video explination"> 
+              {% elseif info.SpecLeft == 'tblIronPoint' %}
+              <table class="specification-tbl center">
+                  <tr>
+                    <th>Length (Iron Point)</th>
+                    <th>Diameter (Iron Point)</th>
+                  </tr>
+                  
+                  <tr>
+                    <td>330 mm (13") <br>
+                      400 mm (15.5")</td>
+                  <td>6 mm (0.24")</td>
+                  </tr>
+                </table>
+              {% elseif info.SpecLeft == 'tblTuftingTape' %}
+              <table class="specification-tbl center">
+                  <tr>
+                  <th>Nylon Tape:</th>
+                  
+                  <th>Plastic Ends:</th>
+                  </tr>
+                  
+                  <tr>
+                  <td>Length: 25 mm - 300 mm<br>
+                  Width: 6.5 mm</td>
+                  
+                  <td>Length: 19 mm
+                  <br>Width: 4 mm
+                  <br>High: 2.5 mm</td>
+                  </tr>
+                  </table>
+
+              {% else %} 
+              {{ info.SpecLeft }} 
+              {% endif %}</p>
+          </div>
+          <div class="col-md-6 specification-text center" >
+            <p>
+              {% if info.SpecRight == 'tuftingTapeVideo' %}
+              <img class="img-fluid video" src="images/ejctorworking.gif" alt="Video explination" title="Video explination">
+
+              {% elseif info.SpecRight == 'tblWoodHandle'%}
+              <table class="specification-tbl center">
+                  <tr>
+                    <th>Length (Wood Handle)</th>
+                    <th>Diameter (Wood Handle)</th>
+                  </tr>
+                  
+                  <tr>
+                    <td>TODO: get length</td>
+                  <td>TODO: get Diameter</td>
+                  </tr>
+                </table>
+
+              {% else %} 
+              {{ info.SpecRight }}
+              {% endif %}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 specification-details ">
+            <p>
+                {% if info.SpecMiddle == 'ventilatorImage' %}
+                <p class="center"><img class="img-fluid center" src="images/vents_chart.JPG" title="vents" alt="vents"></p>
+                {% elseif info.SpecMiddle == 'edgeTapeTable' %}
+                <table class="center specification-tbl">
+                    <tr>
+                    <th>Width:</th>
+                    <th>Colour:</th>
+                    <th>Packaging:</th>
+                    </tr>
+                    
+                    <tr>
+                    <td>
+                      22 mm (7/8")<br>
+                      32 mm (1 1/4")<br>
+                      37 mm (1 7/16")<br>
+                      or custom made
+                    </td>
+                    
+                    <td>White
+                    Beige<br>
+                    Blue<br>
+                    Grey<br>
+                    Black<br>
+                    Gold<br>
+                    or as required</td>
+                    
+                    <td>Rolls: 109.40 yards per roll (100 meters)<br>
+                    Spools: 250 - 500 yards per spool</td>
+                    </tr>
+                  </table>
+  
+                {% else %}
+                  {{ info.SpecMiddle }}
+                {% endif %}</p>
+          </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block productTestimonial %}
+<section id="testimonials" class="light-overlay">
+    <div class="container">
+      <h5 class="text-center title">PRODUCT TESTIMONIALS</h5>
+      <hr />
+      {% for testimonial in testimonials %}
+      {% if loop.index % 2 %}
+      <div class="row justify-content-left">
+      <div class="row justify-content-left revealOnScroll" data-animation="fadeInLeft">
+          <div class="col-7">
+              <img class="rounded-circle headshot img-fluid" height="180" width="180" src="{% if testimonial.picture is empty %} images/default.jpg {% else %} data:image;base64,{{ testimonial.picture }} {% endif %}"  alt="Display picutre of user" title="Display picutre of user" />
+          </div>
+          <div class="col-5 align-self-center testimonial-text left">
+              <p>
+                {{ testimonial.Testimonial }}
+              </p>
+          </div>
+        </div>
+      </div>
+        {% else %}
+        <div class="row justify-content-right">
+          <div class="col">
+        <div class="row revealOnScroll" data-animation="fadeInRight">
+          <div class="col-9 align-self-center mr-5 testimonial-text right">
+              <p>
+                {{ testimonial.Testimonial }}
+              </p>
+          </div>
+          <div class="col-auto pr-4">
+              <img class="rounded-circle headshot img-fluid" height="180" width="180" src="{% if testimonial.picture is empty %} images/default.jpg {% else %} data:image;base64,{{ testimonial.picture }} {% endif %}"  alt="Display picutre of user" title="Display picutre of user" />
+          </div>
+          </div>
+        </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% if logged_in %}
+
+        <div class="container">
+          <div class="row">
+            <div class="col p-4">
+<div>
+  <h3>Give us your opinion on our product!</h3>
+  <form method="POST" action="testimonials.php">
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+
+
+                        </div>
+                        <div class="form-group">
+                          <label for="body">Your testimonial:</label>
+                          <textarea name="editor2" class="form-control" placeholder="Enter message" rows="14" cols="150"></textarea>
+                        </div>
+                        <input type="hidden" name="ProductID" value="{{product.ProductID}}">
+
+                          <input type="Submit" name="" class="btn btn-outline-success btn-lg">
+                  </form>
+</div>
+</div>
+</div>
+</div>
+{%endif%}
+{% endblock %}
+{% endblock %}

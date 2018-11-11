@@ -1,0 +1,13 @@
+#page-header{
+  height: 200px;
+  background:url('../images/image3.jpg');
+  background-position: 0 -160;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 3px #eee solid;
+  padding-top: 30px;
+}
+
+.account-controls{
+  flex-direction: row;
+}

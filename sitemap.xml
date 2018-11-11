@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="404.html" title="Error page"  description="The page a user gets redirected to when the page failed to load.">
+    <siteMapNode url="about.html" title="About Us"  description="About Mattex International." />
+    <siteMapNode url="contact.html" title="Contact"  description="Summary of all the possible contact methods and infromation." />
+    <siteMapNode url="edge_tape.html" title="Edge Tape"  description="Edge Tape product page." />
+    <siteMapNode url="faq.html" title="Frequently Asked Questions"  description="Frequently Asked Questions and answers." />
+    <siteMapNode url="feedback.html" title="Feedback"  description="Feedback form to let us know how to better serve you." />
+    <siteMapNode url="index.html" title="Home"  description="Landing page." />
+    <siteMapNode url="login.html" title="Login"  description="Login potal." />
+    <siteMapNode url="needles.html" title="Needles"  description="Needles product page." />
+    <siteMapNode url="order_from.html" title="Order Form"  description="Form the user must fill out to complete an order." />
+    <siteMapNode url="products.html" title="Product Catalog"  description="List of all the products we currently sell." />
+    <siteMapNode url="signup.html" title="Sign up"  description="Sign up form." />
+    <siteMapNode url="sitemap.html" title="Site Map"  description="List of all user accessible webpages. " />
+    <siteMapNode url="tufting_buttons.html" title="Tufting Buttons"  description="Tufting Buttons product page." />
+    <siteMapNode url="tufting_tape.html" title="Tufting Tape"  description="Tufting Tape product page." />
+    <siteMapNode url="ventilators.html" title="Ventilators"  description="Ventilators product page." />
+    <siteMapNode url="washers.html" title="Washers"  description="Washers product page." />
+  </siteMapNode>
+</siteMap>

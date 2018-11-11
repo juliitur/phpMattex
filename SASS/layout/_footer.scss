@@ -1,0 +1,13 @@
+#main-footer {
+  background: $primary-color;
+  color: #fff;
+  ul li{
+    list-style-type: none;  
+  }
+  a{
+    &:link, &:visited{
+      text-decoration: none;
+      color: $highlight-color;
+    }
+  }
+}

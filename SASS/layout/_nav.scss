@@ -1,0 +1,32 @@
+.navbar-brand{
+  font-family: 'Abril Fatface', cursive;
+  font-size: 1.1em;
+  text-shadow: 2px 2px 3px #444;
+}
+
+.navbar{
+  box-shadow: 2px 2px 5px #3292a6;
+  background: #fff; 
+  .nav-link{
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .nav-item.active{
+    border-left: #eee 3px solid;
+  }
+}
+.dropdown-menu data-img{
+  border-radius: 25px;
+}
+.dropdown-item:hover{
+  background-color: lightsteelblue;
+}
+.fa-chevron-left, .fa-chevron-right{
+  position: relative;
+  right: 1em;
+}
+.fa-chevron-right{
+  display: none;
+}

@@ -1,0 +1,22 @@
+@media(max-width:768px){
+  .nav-link{
+    font-size: .7em !important;
+  }
+
+  #single-main h1{
+    font-size: 4em;}
+
+  #main-nav p{
+    display: none;
+  }  
+}
+
+@media (min-width:769px){
+    .specification-text:last-of-type{
+      border-left: 1px solid white;
+    }
+    .navbar-brand{
+      font-size: 1.7em !important;
+    }
+  }
+  

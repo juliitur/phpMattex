@@ -1,0 +1,24 @@
+#start the Rewrite Engine
+RewriteEngine On
+
+#URL Redirects
+
+
+#Prevent viewing of .htaccess file
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+#Prevent directory listings
+Options All -Indexes
+
+#non-existing links to 404.php
+<IfModule mod_rewrite.c>
+RewriteBase /
+RewriteRule ^404\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /404.php [L]
+</IfModule>
+ 

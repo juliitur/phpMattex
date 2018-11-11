@@ -1,0 +1,11 @@
+@media (min-width:321px) and (max-width:575px){
+  .popover{
+    max-width: 200px !important;
+  }
+  .fa-chevron-left{
+    visibility: hidden;
+  }
+  .fa-chevron-right{
+    display: inline-block;
+  }
+}

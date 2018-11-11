@@ -1,0 +1,123 @@
+{# GET MAIN TEMPLATE #}
+{% extends "main.html" %}
+
+{# META TAGS #}
+{% block pageDescription %} If you have any issues with our product, please let us know by filling this form out. {% endblock %}
+{% block pageKeywords %} feedback,products,message,picture {% endblock %}
+
+{# PAGE TITLE #}
+{% block pageName %} Contact {% endblock %}
+
+{# PAGE CONTENT #}
+{% block content %}
+{% if logged_in %}
+        <!-- Breadcrumbs -->
+        <nav class="navbar breadcrumb bg-info p-0">
+          <div class="container">
+            <a href="index.php" class="bread-link">Home</a>
+            <i class="fas fa-angle-right"></i>
+            <a href="feedback.php" class="bread-link">Submit feedback</a>
+          </div>
+        </nav>
+
+      
+     <!-- PAGE HEADER -->
+    <header id="page-header">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 m-auto text-center text-muted">
+              <h1>Feed back</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, commodi.</p>
+            </div>
+          </div>
+        </div>
+      </header> 
+
+      <!-- DETAILS -->
+      <section id="posts">
+        <div class="container">
+          <div class="row">
+            <div class="col p-4">
+              <h1 class="display-4 text-center text-success" >Please leave your Feedback by filling out the form below</h1>
+              <div class="card">
+                <div class="card-header">
+                  <h4>Your Feedback</h4>
+                </div>
+                <div class="card-body">
+                  {% if logged_in == false %}
+                  <div>
+                    <p>For Leave a Feedback, Please LogIn</p>
+
+                  </div>
+                  {%endif%}
+                  <form method="POST" action="">
+                      <div class="form-group">
+                          <label for="title">Title</label>
+                          <input name="title" type="text" class="form-control" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+
+
+                        </div>
+                        <div class="form-group">
+                          <label for="body">Body</label>
+                          <textarea name="editor1" class="form-control" placeholder="Enter message" rows="14" cols="150"></textarea>
+                        </div>
+<!--                         <div>
+                              <input type="radio" name="rating" value="1">&nbsp;<span class="fa fa-star"></span><br>
+                              <input type="radio" name="rating" value="2">&nbsp;<span class="fa fa-star"></span><span class="fa fa-star"></span><br>
+                              <input type="radio" name="rating" value="3">&nbsp;<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><br>
+                              <input type="radio" name="rating" value="4">&nbsp;<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><br>
+                              <input type="radio" name="rating" value="5">&nbsp;<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><br>    
+                        </div> -->
+
+
+                         <div class='rating-stars text-center' name="rating">
+                            <ul id='stars'>
+                              <li class='star' title='Poor' data-value='1'>
+                                <i class='fa fa-star fa-fw'></i>
+                              </li>
+                              <li class='star' title='Fair' data-value='2'>
+                                <i class='fa fa-star fa-fw'></i>
+                              </li>
+                              <li class='star' title='Good' data-value='3'>
+                                <i class='fa fa-star fa-fw'></i>
+                              </li>
+                              <li class='star' title='Excellent' data-value='4'>
+                                <i class='fa fa-star fa-fw'></i>
+                              </li>
+                              <li class='star' title='WOW!!!' data-value='5'>
+                                <i class='fa fa-star fa-fw'></i>
+                              </li>
+                            </ul>
+                          </div>
+  
+  <div class='success-box'>
+    <div class='clearfix'></div>
+    <img alt='tick image' width='32' src='https://i.imgur.com/3C3apOp.png'/>
+    <div class='text-message'></div>
+    <div class='clearfix'></div>
+  </div>
+<input type="hidden" name="rating" id="rating" >
+                          <input type="Submit" name="" class="btn btn-outline-success btn-lg">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% else %}
+<br />
+<div class="container">
+  <div class="alert alert-danger center">
+    <h4 class="alert-heading">Oh No!</h4>
+    <p class="mb-0">You must login before submitting feedback! <br />
+    Click <a href="login.php">HERE</a> to login!</p>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

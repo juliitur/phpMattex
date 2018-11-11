@@ -1,0 +1,78 @@
+{% extends "main.html" %}
+
+{# META TAGS #}
+{% block pageDescription %} {% endblock %}
+{% block pageKeywords %} {% endblock %}
+
+{# PAGE TITLE #}
+{% block pageName %} Admin panel {% endblock %}
+
+{# PAGE CONTENT #}
+{% block content %}
+{% if logged_in %}
+  <!-- Breadcrumbs -->
+  <nav class="navbar breadcrumb bg-info p-0">
+    <div class="container">
+      <a href="index.php" class="bread-link">Home</a>
+      <i class="fas fa-angle-right"></i>
+      <a href="login.php" class="bread-link">Login</a>
+      <i class="fas fa-angle-right"></i>
+      <a href="order_form.php" class="bread-link">Shopping Cart Details</a>
+    </div>
+  </nav>
+
+<!-- ORDER FORM -->
+<section id="order" class="py-5 text-center text-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+       <form  class="form-group" name="form1" id="form1" method="post" action="update_cart.php">
+       <div id="main">
+         <h2 class="display-3 text-muted">Shopping Cart Details</h2>
+         <table class="table table-light table-striped" id="productTable">
+           <thead class="thead-dark text-center">
+             <tr id="productTr">
+                 <th>Product</th>
+                 <th>Unit Price</th>
+                 <th width="10%">Quantity</th>
+                 <th>Total</th>
+                 <th>Remove</th>
+             </tr>
+           </thead>
+           <tbody>
+             {% for item in cart %}
+               <tr>
+                 <td>{{item.description}}</td>
+                 <td>{{item.unit_price}}</td>
+                 <td><input type="number" class="form-control" name="quantity[{{item.product_id}}]" value="{{item.quantity}}"required></td>
+                 <td>{{item.sub_total}}</td>
+                 <td><a href="remove_from_cart.php?product_id={{item.product_id}}" class="btn btn-danger"><i class="fas fa-minus-circle"></i></a></td>
+               </tr>
+             {% endfor %}
+
+           </tbody>
+         </table>
+       </div>
+
+         <br>
+         <button class="btn btn-outline-info" type="submit" id="button">Update Cart</button>
+         <a class="btn btn-outline-info" href="products.php">Continue Shopping</a>
+         <a class="btn btn-outline-success" href="payment_form.php">Proceed to checkout</a>
+
+
+   </form>
+ </div>
+  </div>
+</div>
+ </section>
+  {% else %}
+  <br />
+  <div class="container">
+    <div class="alert alert-danger center">
+      <h4 class="alert-heading">Oh No!</h4>
+      <p class="mb-0">You must login before constructing a shopping cart! <br />
+      Click <a href="login.php">HERE</a> to login!</p>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

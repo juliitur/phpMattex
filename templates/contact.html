@@ -1,0 +1,142 @@
+{# GET MAIN TEMPLATE #}
+{% extends "main.html" %}
+
+{# META TAGS #}
+{% block pageDescription %} Location of all our contact information, including business hours, Address, Phone numbers and finally a place to leave your phone number for us to call you back! {% endblock %}
+{% block pageKeywords %} business,hours,email,phone,number,Address {% endblock %}
+
+{# PAGE TITLE #}
+{% block pageName %} Contact {% endblock %}
+
+{# PAGE CONTENT #}
+{% block content %}
+        <!-- Breadcrumbs -->
+        <nav class="navbar breadcrumb bg-info p-0">
+            <div class="container">
+              <a href="index.php" class="bread-link">Home</a>
+              <i class="fas fa-angle-right"></i>
+              <a href="contact.php" class="bread-link">Contact</a>
+            </div>
+          </nav>
+  
+  
+      <!-- PAGE HEADER -->
+      <header id="page-header">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 m-auto text-center text-muted">
+              <h1>Contact Us</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, commodi.</p>
+            </div>
+          </div>
+        </div>
+      </header>
+  
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card p-4">
+                <div class="card-body">
+                  <h4>Get In Touch</h4>
+                  <p>If you have any questions, just fill in the contact form, and we will answer you shortly. </p>
+                  <h4>Address</h4>
+                  <p>3155 Halpern, Saint-Laurent, QC</p>
+                  <h4>Email</h4>
+                  <a href="mailto:test@test.com">test@test.com</a>
+                  <h4>Phone / Fax</h4>
+                  <p>+1 (514)501-6846</p>
+                  <p style="margin-bottom: 0;">+1 (514)221-2497</p>
+                </div>
+              </div>
+            </div>
+  
+  
+        <div class="col-md-8">
+          <div class="card p-4">
+            <div class="card-body">
+              <h3 class="text-center">Please fill out this form to contact Us</h3>
+              <hr>
+  <!-- Start Form -->
+  <form class ="contact-form" action="contactform.php" method="post" onsubmit="tkcontact()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" name="name" class="form-control" placeholder="First Name" required="required">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" name="lastname" class="form-control required" placeholder="Last Name" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Email" class="form-control" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="phone" name="Phone" class="form-control required" placeholder="Phone">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <input type="text" name="subject" class="form-control required" rows="1" placeholder="Subject" required>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <textarea name="message" class="form-control required" rows="4" placeholder="Message" required></textarea>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <input type="submit" name="submit" value="Submit" class="btn btn-outline-danger btn-block">
+        </div>
+      </div>
+    </div>
+  </form>
+  <!-- End Form -->
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+      </section>
+      <!-- start map -->
+      <div class="container">
+        <iframe  style="margin-bottom: 12px" width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=3155+Rue+Halpern,+Montr%C3%A9al,+QC,+Canada&amp;aq=0&amp;oq=31&amp;sll=45.505866,-73.643761&amp;sspn=0.059672,0.169086&amp;ie=UTF8&amp;hq=&amp;hnear=3155+Rue+Halpern,+Montr%C3%A9al,+Communaut%C3%A9-Urbaine-de-Montr%C3%A9al,+Qu%C3%A9bec+H4S+1R5,+Canada&amp;t=m&amp;ll=45.497444,-73.750534&amp;spn=0.042114,0.072956&amp;z=13&amp;output=embed"></iframe>
+      </div>
+      <!-- end map -->
+  <!-- SOCIAL BUTTON SECTION -->
+  <section id="social" class="py-5 text-center bg-dark text-light">
+    <div class="container">
+      <h1 class="display-4">You can contact Us through Social Network</h1>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12 widget-icon">
+          <a href="http://facebook.com" target="_blank">
+          <i class="fab fa-facebook-square fa-3x text-light"></i>
+          <h5>Facebook</h5>
+          </a>
+          <a href="http://skype.com" target="_blank">
+            <i class="fab fa-skype fa-3x text-light"></i>
+            <h5>Skype</h5>
+            </a>
+          <a href="http://linkedin.com" target="_blank">
+            <i class="fab fa-linkedin fa-3x text-light"></i>
+            <h5>Linkedin</h5>
+            </a>
+          <a href="http://twitter.com" target="_blank">
+            <i class="fab fa-twitter-square fa-3x text-light"></i>
+            <h5>Twitter</h5>
+            </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

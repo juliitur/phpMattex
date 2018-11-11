@@ -1,0 +1,280 @@
+{# GET MAIN TEMPLATE #}
+{% extends "main.html" %}
+
+{# META TAGS #}
+{% block pageDescription %} {% endblock %}
+{% block pageKeywords %} {% endblock %}
+
+{# PAGE TITLE #}
+{% block pageName %} {% endblock %}
+
+{# PAGE CONTENT #}
+{% block content %}
+{% if logged_in %}
+<br />
+<div class="container">
+  <div class="alert alert-danger center">
+    <h4 class="alert-heading">Oh No!</h4>
+    <p class="mb-0">You must logout before making a new account! <br />
+    Click <a href="logout.php">HERE</a> to logout successfully</p>
+  </div>
+</div>
+{% else %}
+        <!-- Breadcrumbs -->
+        <nav class="navbar breadcrumb bg-info p-0">
+          <div class="container">
+            <a href="index.php" class="bread-link">Home</a>
+            <i class="fas fa-angle-right"></i>
+            <a href="signup.php" class="bread-link">Sign up</a>        
+          </div>
+        </nav>
+
+<!-- PAGE HEADER -->
+<header id="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 m-auto text-center text-muted">
+          <h1>User Registration</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, commodi.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAYMENT FORM START -->
+  {% if error is not empty %}
+  <div class="container">
+      <div class="alert alert-danger">
+      <h4 class="alert-heading">Form validation errors!</h4>
+      <p class="mb-0">We've found the some issues with the form, please correct the following fields:
+        {% for error in error %}
+        <p class="mb-0"> {{error}} </p>
+        {% endfor %}
+      </p>
+    </div>
+  </div>
+  {% endif %}
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>New User</h2>
+      <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam similique nemo corporis in
+        expedita magni!</p>
+    </div>
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+        <form method="POST" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="firstName">First name</label>
+              <div class="input-group input-group-md mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-user text-info"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" name="firstName" placeholder="John" value="{{ formData.firstName }}" >
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="username">Middle name <span class="text-muted">(Optional)</span></label>
+              <div class="input-group input-group-md mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="far fa-user text-info"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" name="middleName" placeholder="Middle name" value="{{ formData.middleName }}">
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="firstName">Last name</label>
+              <div class="input-group input-group-md mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-user text-info"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" name="lastName" placeholder="M.Doe" value="{{ formData.lastName }}"required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-4 mb-3">
+                  <label for="password">Password</label>
+                  <div class="input-group input-group-md mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-key text-info"></i>
+                      </span>
+                    </div>
+                    <input type="password" class="form-control" name="password" placeholder="Password" value="{{ formData.password }}" required>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="password">Confirm Password</label>
+                    <div class="input-group input-group-md mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fas fa-key text-info"></i>
+                        </span>
+                      </div>
+                      <input type="password" class="form-control" name="rePassword" placeholder="Password" required>
+                    </div>
+                  </div>
+              </div>
+          <div class="form-group">
+            <label for="image" class="image">Upload display picture <span class="text-muted">(Optional)</span></label>
+            <div class="custom-file">
+                <label for="image" id="path" class="custom-file-label image">Choose File</label>
+                <input type="hidden" name="hpath" id="hpath" value="">
+                <input type="file" name="image" id="image" class="custom-file-input">
+            </div>
+            <small class="form-text text-muted">Max Size 3mb</small>
+          </div>
+
+          <div class="mb-3">
+            <label for="email">Email</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="far fa-envelope text-info"></i>
+                </span>
+              </div>
+              <input id="email" type="email" class="form-control" name="email" placeholder="you@example.com" value="{{ formData.email }}" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email">Company name <span class="text-muted">(Optional)</span></label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-building text-info"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" name="companyName" placeholder="Company name" value="{{ formData.companyName }}">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="address">Address</label>
+            <div class="input-group input-group-md mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="far fa-address-card text-info"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" name="address" placeholder="1234 Main St" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 mb-3">
+              <label for="country">Country</label>
+              <select class="custom-select d-block w-100" name="country" id="country" value="{{ formData.country }}" data-live-search="true" required>
+                <option value="">Select Country</option>
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="state">State</label>
+              <select class="custom-select d-block w-100" name="state" id="state" value="{{ formData.state }}" autofocus="autofocus" required>
+                <option value="">Select an Option</option>   
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="state">City</label>
+              <select class="custom-select d-block w-100" name="city" id="city" standard value="{{ formData.city }}" title="Select an Option" autofocus="autofocus" required>
+                <option value="">Select an Option</option>   
+              </select>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="zip">Zip</label>
+              <input type="text" class="form-control" name="zip" placeholder="Zip code" value="{{ formData.zip }}" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="firstName">Phone number</label>
+              <div class="input-group input-group-md mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-phone text-info"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" name="phone" placeholder="123 456 7890" value="{{ formData.phone }}" required>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="firstName">Cell-phone number</label>
+              <div class="input-group input-group-md mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-mobile-alt text-info"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" name="cellPhone" placeholder="123 456 7890" value="{{ formData.cellPhone }}" required>
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4">
+          <button class="btn btn-outline-success btn-md btn-block" type="submit">REGISTRATION</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    window.load=$( document ).ready(function() {
+
+$.ajax({
+             type:'POST',
+             url:'scripts/countryAjaxData.php',
+             success:function(html){
+                 $('#country').html(html);
+             
+                                   }
+                }); 
+        
+         });  
+       
+       
+        $( document ).ready(function() {
+          
+          $('#country').on('change',function(){//change function on country to display all state 
+     var countryID = $(this).val();
+     if(countryID){
+         $.ajax({
+             type:'POST',
+             url:'scripts/ajaxData.php',
+             data:'country_id='+countryID,
+             success:function(html){
+                 $('#state').html(html);
+                 $('#city').html('<option value="">Select state first</option>'); 
+                                   }
+                }); 
+                   }else{
+                        $('#state').html('<option value="">Select country first</option>');
+                        $('#city').html('<option value="">Select state first</option>'); 
+                        }
+ });
+ 
+ $('#state').on('change',function(){//change state to display all city
+     var stateID = $(this).val();
+     if(stateID){
+         $.ajax({
+             type:'POST',
+             url:'scripts/ajaxData.php',
+             data:'state_id='+stateID,
+             success:function(html){
+                 $('#city').html(html);
+                                   }
+                }); 
+                 }else{
+                       $('#city').html('<option value="">Select state first</option>'); 
+                      }
+ });
+
+});
+
+        </script>
+  {% endif %}
+  {% endblock %}

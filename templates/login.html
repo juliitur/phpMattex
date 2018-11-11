@@ -1,0 +1,103 @@
+{# GET MAIN TEMPLATE #}
+{% extends "main.html" %}
+
+{# META TAGS #}
+{% block pageDescription %} Login portal for our website. {% endblock %}
+{% block pageKeywords %} login,sign,up {% endblock %}
+
+{# PAGE TITLE #}
+{% block pageName %} Login Panel {% endblock %}
+
+{# PAGE CONTENT #}
+{% block content %}
+    <!-- Breadcrumbs -->
+      <nav class="navbar breadcrumb bg-info p-0">
+        <div class="container">
+          <a href="index.php" class="bread-link">Home</a>        
+          <i class="fas fa-angle-right"></i>
+          <a href="login.php" class="bread-link">Login</a>
+        </div>
+      </nav>
+
+
+    <!-- PAGE HEADER -->
+    <header id="page-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 m-auto text-center text-muted">
+            <h1>Login Panel</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, deleniti?</p>
+          </div>
+        </div>
+      </div>
+    </header>  
+
+<!-- ACTIONS -->
+<section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+
+      </div>
+    </div>
+  </section>
+{% if logged_in %}
+<section id="login">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="alert alert-warning">
+                  <h4 class="alert-heading">Warning!</h4>
+                  <p class="mb-0">You are already logged into an account, If you wish to use a different account, 
+                  <a href="logout.php">Click Here</a> to logout!</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+{% else %}
+
+{% if error is not empty %}
+<div class="container">
+    <div class="alert alert-danger">
+    <h4 class="alert-heading">Form validation errors!</h4>
+    <p class="mb-0">We've found the some issues with the form, please correct the following fields:
+      {% for error in error %}
+      <p class="mb-0"> {{error}} </p>
+      {% endfor %}
+    </p>
+  </div>
+</div>
+{% endif %}
+  <!-- LOGIN -->
+  <section id="login">
+    <form action="" method="POST">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card">
+              <div class="card-header">
+                <h4>Account Login</h4>
+              </div>
+              <div class="card-body">
+                <form action="index.php">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" value="{{ user }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password">
+                  </div>
+                  <input type="submit" class="btn btn-dark btn-block" value="Login">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+{% endif %}
+{% endblock %}

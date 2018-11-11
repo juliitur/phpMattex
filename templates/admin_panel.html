@@ -1,0 +1,337 @@
+{# GET MAIN TEMPLATE #}
+{% extends "main.html" %}
+
+{# META TAGS #}
+{% block pageDescription %} {% endblock %}
+{% block pageKeywords %} {% endblock %}
+
+{# PAGE TITLE #}
+{% block pageName %} Admin panel {% endblock %}
+
+{# PAGE CONTENT #}
+{% block content %}
+{% if accountType == '0' %}
+  <!-- Breadcrumbs -->
+  <nav class="navbar breadcrumb bg-info p-0">
+    <div class="container">
+      <a href="index.php" class="bread-link">Home</a>
+    </div>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <header id="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 m-auto text-center text-muted">
+          <h1>Admin Panel</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, deleniti?</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+{% if error is not empty %}
+  <div class="container pt-4">
+    <div class="alert alert-danger">
+    <h4 class="alert-heading">Form validation errors!</h4>
+    <p class="mb-0">We've found the some issues with the form, please correct the following fields:
+      {% for error in error %}
+      <p class="mb-0"> {{error}} </p>
+      {% endfor %}
+    </p>
+  </div>
+</div>
+{% endif %}
+
+  <!-- ADD PRODUCT & SEARCH -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addProductModal">
+            <i class="fas fa-plus"></i> Add New Product
+          </a>
+        </div>
+        <div class="col-md-6 ml-auto">
+          <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addProductQuantityModal">
+            <i class="fas fa-plus"></i> Change Product Quantity And Price
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+  <!-- PRODUCTS -->
+  <section id="categories">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header text-info">
+              <h4>Latest Products</h4>
+            </div>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>Product name</th>
+                  <th>Product price</th>
+                  <th>Quantity in stock</th>
+                  <th>Add / Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+{%for product in products%}
+                <tr>
+                  <td>{{product.ProductID}}</td>
+                  <td>{{product.cleanName}}</td>
+                  <td>{{product.ProductPrice}}  CAD</td>
+                  <td>{{product.QuantityInStock}}</td>
+                  <td>
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addProductModal">
+                      <i class="fas fa-plus-circle"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger">
+                      <i class="fas fa-minus-circle"></i>
+                    </a>
+                  </td>
+                </tr>
+{%endfor%}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADD USERS & SEARCH -->
+  <section id="search" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
+            <i class="fas fa-plus"></i> Add User
+          </a>
+        </div>
+        <div class="col-md-6 ml-auto">
+          <div class="input-group">
+            <input id="userSearch" type="text" class="form-control" placeholder="Search Users..." onkeyup="showSuggestion(this.value)">
+            <div class="input-group-append">
+              <button class="btn btn-info">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- USERS -->
+  <section id="users">
+    <div class="container">
+      <div class="row">
+        <div class="col mb-3">
+          <div class="card">
+            <div class="card-header">
+              <h4>Edit Users</h4>
+            </div>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>Email</th>
+                  <th>Edit / Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in userList %}
+                <tr>
+                  <td>{{ user.UserID }}</td>
+                  <td>{{ user.Email }}</td>
+                  <td>
+                    <a name="editUser" class="editUser btn btn-success" id='{{ user.UserID }}' email='{{user.Email}}' data-toggle='modal'>
+                      <i class="fas fa-plus-circle"></i>
+                    </a>
+                    <a href="admin_panel.php?user={{ user.UserID }}&action=delete" class="btn btn-danger">
+                      <i class="fas fa-minus-circle"></i>
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="config">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 mb-3">
+          <form action="admin_panel.php?action=config" method="POST">
+            <label>Number of products to be displayed in <b>product spotlight</b>:</label>
+              <div class="input-group input-group-md mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-wrench text-info"></i>
+                  </span>
+                </div>
+              <input type="number" name="productSpotlight" value="{{ numSpotlight }}" />
+            </div>
+          </div>
+            <div class="col-md-auto mb-3">
+                  <label>Number of products to be displayed in the <b>dropdown menu</b>:</label>
+                  <div class="input-group input-group-md mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <i class="fas fa-wrench text-info"></i>
+                    </span>
+                  </div>
+                  <input type="number" name="productList" value="{{ numProductList }}"/>
+              </div>
+          </div>
+          <div class="col-ms-auto mb-3 ml-5 align-self-center">
+            <button class="btn btn-outline-success btn-md btn-block" type="submit" value="Update config">Submit</button>
+        </div>
+        </div>
+
+        </div>
+    </form>
+</section>
+
+  <!-- MODALS -->
+
+  <!-- ADD PRODUCTS MODAL -->
+  <div class="modal fade" id="addProductModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Add New Product</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                   <form action="admin_panel.php?action=newProduct" method="POST">
+            <div class="form-group">
+              <label for="title">Product name</label>
+              <input type="text" class="form-control" name="productName" >
+            </div>
+            <div class="form-group">
+              <label for="title">Product price</label>
+              <input type="text" class="form-control" name="productPrice" >
+            </div>
+
+            <div class="form-group">
+              <label for="image">Upload Image</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image" name="productImage">
+                <label for="image" class="custom-file-label">Choose File</label>
+              </div>
+              <small class="form-text text-muted">Max Size 3mb</small>
+            </div>
+            <div class="form-group">
+              <label for="body">Product Description</label>
+              <textarea class="form-control" name="productDescription" ></textarea>
+            </div>
+
+        <div class="modal-footer">
+          <input type="submit" name="" value="Add Product" class="btn btn-success">
+        </div>
+
+         </form>
+         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD PRODUCTS QUANTITY MODAL -->
+  <div class="modal fade" id="addProductQuantityModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Add Product Quantity</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                   <form action="invoice.php" method="POST">
+            <div class="form-group">
+              <label for="title">Product name</label>
+             <select name="selProducts" class="form-control">
+    {%for product in products%}
+    <option value="{{product.ProductID}}" selected="selected" >{{product.cleanName}}</option>
+    {%endfor%}
+  </select>
+     </div> 
+            <div class="form-group">
+              <label for="title">Product price</label>
+
+              <input type="text" class="form-control" name="productPrice" >
+            </div>
+
+            
+            <div class="form-group">
+              <label for="body">Quantity:</label>
+              <input type="text" class="form-control" name="productQuantity">
+            </div>
+
+        <div class="modal-footer">
+          <input type="submit" name="" value="Add Product" class="btn btn-success">
+        </div>
+
+         </form>
+         </div>
+      </div>
+    </div>
+  </div>
+  <!-- ADD USER MODAL -->
+  <div class="modal fade" id="addUserModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Edit User</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="admin_panel.php" method="POST">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" class="form-control" name="password">
+            </div>
+            <div class="form-group">
+              <label for="password2">Confirm Password</label>
+              <input type="password" class="form-control" name="password2">
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="user" id="user">
+              <input type="submit" name="edit" value="Edit user" class="btn btn-success">
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+<div class="container">
+    <br />
+  <div class="alert alert-danger">
+    <h4 class="alert-heading">Oh No!</h4>
+    <p class="mb-0">You do not have sufficient access to use this page! Please contact the webmaster! </p>
+  </div>
+</div>
+{% endif %}
+  
+  {% endblock %}

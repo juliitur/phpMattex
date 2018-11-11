@@ -1,0 +1,19 @@
+@media (max-width:320px){
+  .popover{
+    display: none;
+  }
+  .fa-chevron-left{
+    visibility: hidden;
+  }
+  .fa-chevron-right{
+    display: inline-block;
+  }
+  .specification-tbl{
+    margin: 0 !important;
+    position: relative;
+    right: 80px;
+  }
+  .spec-title{
+    font-size: 1em;
+  }
+}

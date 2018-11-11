@@ -1,0 +1,57 @@
+{# GET MAIN TEMPLATE #}
+{% extends "main.html" %}
+
+{# META TAGS #}
+{% block pageDescription %} All of the websites links that contain content {% endblock %}
+{% block pageKeywords %} list,webpages,active {% endblock %}
+
+{# PAGE TITLE #}
+{% block pageName %} Sitemap {% endblock %}
+
+{# PAGE CONTENT #}
+{% block content %}
+    <!-- CONTENT -->
+      <section id="product" class="light-overlay">
+          <div class="container">
+            <br />
+            <h1 class="text-center text-muted">Site Map</h1>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <a href="index.php">Home</a>
+                        </li>
+                        <li>
+                            <a href="about.php">About</a>
+                        </li>
+                        <li>
+                            <a href="products.php">Products</a>
+                            {% for product in products %}
+                            <ul>
+                                <li><a href="product_detail.php?ProductID={{ product.ProductID }}">{{product.cleanName}}</a></li>
+                            </ul>
+                            {% endfor %}
+                        </li>
+                        <li>
+                            <a href="faq.php">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="contact.php">Contact</a>
+                        </li>
+                        <li>
+                            <a href="login.php">Login</a>
+                        </li>
+                        <li>
+                          <a href="signup.php">Sign up Form</a>
+                        </li>
+                        <li>
+                            <a href="feedback.php">Submit feedback</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </section>
+{% endblock  %}

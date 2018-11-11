@@ -1,0 +1,167 @@
+{# GET MAIN TEMPLATE #}
+{% extends "main.html" %}
+
+{# META TAGS #}
+{% block pageDescription %} A list of the most commonly asked questions with detailed answers to help you make your order correctly. {% endblock %}
+{% block pageKeywords %} frequently,asked,questions,answers {% endblock %}
+
+{# PAGE TITLE #}
+{% block pageName %} FAQ  {% endblock %}
+
+{# PAGE CONTENT #}
+{% block content %}
+        <!-- Breadcrumbs -->
+        <nav class="navbar breadcrumb bg-info p-0">
+          <div class="container">
+            <a href="index.php" class="bread-link">Home</a>       
+            <i class="fas fa-angle-right"></i>
+            <a href="faq.php" class="bread-link">FAQ</a>
+          </div>
+        </nav>
+
+
+    <!-- PAGE HEADER -->
+    <header id="page-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 m-auto text-center text-muted">
+            <h1>Frequently Asked Questions</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, commodi.</p>
+          </div>
+        </div>
+      </div>
+    </header> 
+    
+    <!-- VIDEO PLAY SECTION-->
+<section id="video-play">
+  <div class="light-overlay">
+    <div class="row">
+      <div class="col">
+        <div class="container p-5">
+          <a href="#" class="video" data-video="https://www.youtube.com/embed/muDQ70dX6Xk" data-toggle="modal" data-target="#videoModal">
+          <i class="fab fa-youtube fa-3x"></i></a>
+          <h2>See the History of Innovation</h2>
+          <p>Simmons is the maker of Beautyrest®, BackCare®, BackCare® Kids™, Connoisseur™ and World Class® mattresses. Simmons is committed to helping consumers attain a higher quality of sleep and supports its mission through a Better Sleep Through Science® philosophy, which includes developing superior mattresses and promoting a sound, smart sleep routine.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="modal fade" id="videoModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+        <iframe src="" frameborder="0" height="350" width="100%" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- FAQ -->
+  <section id="faq" class="p-5 bg-dark text-white">
+      <div class="container">
+        <h1 class="text-center text-white">You have Questions We have Answers </h1>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-arrow-circle-down"></i>
+                      Question One
+                    </button>
+                  </h5>
+                </div>
+  
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis distinctio exercitationem dolor minus placeat
+                    amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae molestias nulla, quod
+                    voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                  </div>
+                </div>
+              </div>
+  
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fas fa-arrow-circle-down"></i>
+                      Question Two 
+                    </button>
+                  </h5>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis distinctio exercitationem dolor minus placeat
+                    amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae molestias nulla, quod
+                    voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                  </div>
+                </div>
+              </div>
+  
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"><i class="far fas fa-arrow-circle-down"></i>
+                      Question Three
+                    </button>
+                  </h5>
+                </div>
+  
+                <div id="collapseThree" class="collapse " aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis distinctio exercitationem dolor minus placeat
+                    amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae molestias nulla, quod
+                    voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header" id="headingFour">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour"><i class="fas fa-arrow-circle-down"></i>
+                      Question Four
+                    </button>
+                  </h5>
+                </div>
+  
+                <div id="collapseFour" class="collapse " aria-labelledby="headingFour" data-parent="#accordion">
+                  <div class="card-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis distinctio exercitationem dolor minus placeat
+                    amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae molestias nulla, quod
+                    voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header" id="headingFive">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive"><i class="fas fa-arrow-circle-down"></i>
+                      Question Five
+                    </button>
+                  </h5>
+                </div>
+  
+                <div id="collapseFive" class="collapse " aria-labelledby="headingFive" data-parent="#accordion">
+                  <div class="card-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis distinctio exercitationem dolor minus placeat
+                    amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae molestias nulla, quod
+                    voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
